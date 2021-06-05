@@ -3,72 +3,86 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using Unity.Mathematics;
 
 public class RespireFundo : MonoBehaviour
 {
     public RectTransform outerCircle;
     public RectTransform innerCircle;
-    
+    public float vezesParaPassar;
+
+    public Vector3 minScale;
+    public Vector3 maxScale;
 
     [SerializeField] private float duration;
 
     public TextMeshProUGUI inspireTXT;
     private bool isExpiring = false;
     private float tempoRespirando;
+    private int vezesRespirado = 0;
 
     void Start()
     {
-        
+        innerCircle.localScale = minScale;
+        inspireTXT.text = "inspire";
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-
-
-        if (!isExpiring)
-            Inpirando();
-        else
+        tempoRespirando = math.clamp(tempoRespirando,0f,duration);
+        if (isExpiring)
             Expirando();
-           
+        else
+            Inpirando();
     }
 
     void Inpirando()
     {
-        inspireTXT.text = "inspire";
 
 
         if (Input.GetButton("Interact"))
         {
-            innerCircle.DOScale(4, duration).SetEase(Ease.Unset);
+
+            innerCircle.localScale = Vector3.Lerp(minScale, maxScale, tempoRespirando/duration);
+            
             tempoRespirando += Time.deltaTime;
+            if (tempoRespirando >= duration)
+            {
+                inspireTXT.text = "expire!";
+            }
 
         }
         else
         {
-            innerCircle.DOScale(1, duration / 10).SetEase(Ease.Unset);
-            tempoRespirando = 0;
+            if (tempoRespirando >= duration)
+            {
+                isExpiring = true;
+            }
+            innerCircle.localScale = Vector3.Lerp(minScale, maxScale, tempoRespirando/duration);
+            tempoRespirando -= Time.deltaTime;
         }
 
-        if (tempoRespirando >= 5.5)
-        {
-            isExpiring = true;
-            tempoRespirando = 0;
-        }
+        
 
     }
     void Expirando()
     {
-        tempoRespirando += Time.deltaTime;
-        if(tempoRespirando >= 5.5)
+        tempoRespirando -= Time.deltaTime;
+        if(tempoRespirando <= 0)
         {
+            inspireTXT.text = "inspire";
             isExpiring = false;
+            vezesRespirado++;
+            if (vezesParaPassar <= vezesRespirado)
+            {
+                Debug.Log("ACABOu");
+                //aqui faz o que for quando acabar.
+            }
         }
+        innerCircle.localScale = Vector3.Lerp(minScale, maxScale, tempoRespirando/duration);
 
-        inspireTXT.text = "expire";
-
-        innerCircle.DOScale(1, duration).SetEase(Ease.Unset);
         
 
     }

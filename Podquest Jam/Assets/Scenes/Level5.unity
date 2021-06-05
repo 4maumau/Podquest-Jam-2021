@@ -30955,7 +30955,7 @@ PrefabInstance:
     - target: {fileID: 3756847531118809825, guid: 45f3574ed2e68994ca45daecef8f214e, type: 3}
       propertyPath: frase
       value: 
-      objectReference: {fileID: 11400000, guid: ea5fa29b209e63640bd06ed75e4c1f0f, type: 2}
+      objectReference: {fileID: 11400000, guid: 5f00f57e4909e7e4fba302ad294aacf8, type: 2}
     - target: {fileID: 3756847531118809825, guid: 45f3574ed2e68994ca45daecef8f214e, type: 3}
       propertyPath: scaleUp
       value: 1
@@ -31466,6 +31466,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3756847531118809825, guid: 45f3574ed2e68994ca45daecef8f214e, type: 3}
+      propertyPath: frase
+      value: 
+      objectReference: {fileID: 11400000, guid: 919e1269c282c0d4b8f23ee18e9ff50d, type: 2}
     - target: {fileID: 3756847531118809829, guid: 45f3574ed2e68994ca45daecef8f214e, type: 3}
       propertyPath: m_Name
       value: Ball of Thought

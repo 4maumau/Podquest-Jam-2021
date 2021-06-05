@@ -572,7 +572,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outerCircle: {fileID: 784725794}
   innerCircle: {fileID: 1103175362}
-  duration: 10
+  vezesParaPassar: 0
+  minScale: {x: 1, y: 1, z: 1}
+  maxScale: {x: 4, y: 4, z: 4}
+  duration: 5.5
   inspireTXT: {fileID: 1952645178}
 --- !u!1 &343196519
 GameObject:

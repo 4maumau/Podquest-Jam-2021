@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec39438a0aebc584e914a873edb4f270, type: 3}
   m_Name: Level 2 - 1
   m_EditorClassIdentifier: 
-  conteudo: What is the point of this?
+  conteudo: "Qual \xE9 o sentido disso?"

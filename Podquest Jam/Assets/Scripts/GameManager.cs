@@ -19,11 +19,23 @@ public class GameManager : MonoBehaviour
         {
             Restart();
         }
+
+        if (Input.GetKeyDown(KeyCode.PageUp))
+            NextLevel();
+
+        if (Input.GetKeyDown(KeyCode.PageDown))
+            PreviousLevel();
     }
 
     public void NextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void PreviousLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+
     }
 
     public void Quit()

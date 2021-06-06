@@ -10,6 +10,7 @@ public class Door : MonoBehaviour
     private float originalScale;
     public float scaleUp = 1f;
     public float time = .2f;
+    public AudioSource doorSFX;
 
 
     public Transform arrowTransform;
@@ -25,6 +26,7 @@ public class Door : MonoBehaviour
         if(canInteract && Input.GetButtonDown("Interact"))
         {
             print("next phase");
+            doorSFX.Play();
             GameManager.instance.NextLevel();
         }
     }
